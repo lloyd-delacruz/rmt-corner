@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#2C3A2E" />
+
+  <title>Journal — Notes on recovery, posture & care · RMT Corner</title>
+  <meta name="description" content="Plain-language notes from our practice — recovery between sessions, posture for desk workers, what to expect from massage therapy, and a calmer approach to care." />
+  <link rel="canonical" href="https://rmtcorner.com/blog" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Journal — RMT Corner" />
+  <meta property="og:description" content="Notes from our practice on recovery, posture and care." />
+  <meta property="og:url" content="https://rmtcorner.com/blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header
+    x-data="{ open: false, scrolled: false }"
+    x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 24, { passive: true })"
+    :data-scrolled="scrolled.toString()"
+    :class="{ 'menu-open': open }"
+    class="site-nav"
+  >
+    <div class="nav-inner">
+      <a href="/" class="nav-brand" aria-label="RMT Corner — Home">
+        <img src="/assets/logo.svg" alt="" width="56" height="56" />
+        <span class="nav-wordmark">RMT Corner</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/about">About</a>
+        <a href="/blog" aria-current="page">Journal</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <a href="https://rmtcorner.janeapp.com/" target="_blank" rel="noopener" class="nav-cta">Book on Jane App
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+      </a>
+      <button @click="open = !open" :aria-expanded="open" aria-controls="mobile-menu" class="nav-burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div id="mobile-menu" x-show="open" x-cloak x-transition class="nav-mobile">
+      <a href="/">Home</a>
+      <a href="/services">Services</a>
+      <a href="/about">About</a>
+      <a href="/blog" aria-current="page">Journal</a>
+      <a href="/contact">Contact</a>
+      <a href="https://rmtcorner.janeapp.com/" target="_blank" rel="noopener" class="nav-cta-mobile">Book on Jane App</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================================
+         PAGE HERO
+         ============================================================ -->
+    <section class="page-hero" aria-labelledby="page-title">
+      <img class="page-hero-bg" alt="" aria-hidden="true" width="1920" height="1080" fetchpriority="high"
+           src="https://images.unsplash.com/photo-1598620617377-3bfb505b4384?w=1920&q=80&auto=format&fit=crop">
+      <div class="page-hero-wash" aria-hidden="true"></div>
+      <svg class="page-hero-grain" aria-hidden="true" preserveAspectRatio="none"><filter id="g-bl"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/></filter><rect width="100%" height="100%" filter="url(#g-bl)"/></svg>
+      <div class="page-hero-vignette" aria-hidden="true"></div>
+      <div class="page-hero-content">
+        <p class="page-hero-eyebrow"><span class="pip" aria-hidden="true"></span>Journal</p>
+        <h1 id="page-title" class="page-hero-title">Plain-language notes on <em>recovery,</em> posture, and care.</h1>
+        <p class="page-hero-deck">
+          Short, practical pieces from our practice — written for the people we treat, not for Google. Subjects range from how often you should book to what to expect after a deep tissue session.
+        </p>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span class="sep">·</span><span aria-current="page">Journal</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         JOURNAL
+         ============================================================ -->
+    <section
+      class="section"
+      x-data="{
+        cat: 'all',
+        q: '',
+        match(post) {
+          const okCat = this.cat === 'all' || post.cat === this.cat;
+          const okQ = !this.q.trim() || (post.title + ' ' + post.excerpt + ' ' + post.cat).toLowerCase().includes(this.q.trim().toLowerCase());
+          return okCat && okQ;
+        }
+      }"
+    >
+      <div class="container">
+
+        <!-- Featured post -->
+        <article class="blog-featured" :style="cat==='all' && !q ? '' : 'display:none'">
+          <div class="thumb" style="background:radial-gradient(ellipse at 30% 30%, #5a6b48 0%, #2C3A2E 60%, #1c2820 100%);">
+            <div class="thumb-art" aria-hidden="true">No.&nbsp;01</div>
+          </div>
+          <div>
+            <div class="meta"><span class="cat">Editor's pick</span><span>8 min read · 2026-04-14</span></div>
+            <h2>What to expect after your <em>first</em> deep tissue session.</h2>
+            <p class="excerpt">A short guide to the next 48 hours — why some soreness is normal, what is not, and the simple home-care that makes the next session easier on you.</p>
+            <a href="#" class="link-arrow">Read the article <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- Toolbar -->
+        <div class="blog-toolbar">
+          <label class="blog-search" for="blog-q">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input id="blog-q" class="input" type="search" placeholder="Search the journal" x-model="q" aria-label="Search articles" />
+          </label>
+          <div class="blog-cats" role="tablist" aria-label="Filter by category">
+            <button class="blog-cat" :data-active="cat==='all'" @click="cat='all'" role="tab" :aria-selected="cat==='all'">All</button>
+            <button class="blog-cat" :data-active="cat==='recovery'" @click="cat='recovery'" role="tab" :aria-selected="cat==='recovery'">Recovery</button>
+            <button class="blog-cat" :data-active="cat==='posture'" @click="cat='posture'" role="tab" :aria-selected="cat==='posture'">Posture</button>
+            <button class="blog-cat" :data-active="cat==='practice'" @click="cat='practice'" role="tab" :aria-selected="cat==='practice'">Practice</button>
+            <button class="blog-cat" :data-active="cat==='insurance'" @click="cat='insurance'" role="tab" :aria-selected="cat==='insurance'">Insurance</button>
+          </div>
+        </div>
+
+        <!-- Card grid -->
+        <div class="blog-grid">
+
+          <article
+            class="blog-card"
+            x-show="match({ cat:'recovery', title:'Why some soreness is normal — and how to tell when it isn\'t.', excerpt:'Post-treatment soreness, DOMS, and when to call us.' })"
+          >
+            <div class="thumb" style="background:radial-gradient(ellipse at 50% 40%, #6a7a52 0%, #2C3A2E 70%, #1c2820 100%);">
+              <div class="thumb-art" aria-hidden="true">02</div>
+            </div>
+            <div class="meta"><span class="cat">Recovery</span><span>5 min · Apr 2026</span></div>
+            <h3>Why some soreness is normal — and how to tell when it isn't.</h3>
+            <p class="excerpt">Post-treatment soreness, DOMS, and the line between "useful discomfort" and "call your therapist."</p>
+            <a href="#" class="read">Read article <span class="arrow" aria-hidden="true">→</span></a>
+          </article>
+
+          <article
+            class="blog-card"
+            x-show="match({ cat:'posture', title:'A two-minute desk reset that actually works.', excerpt:'A simple sequence for desk workers, anchored in mechanics rather than vibes.' })"
+          >
+            <div class="thumb" style="background:radial-gradient(ellipse at 70% 30%, #4d6048 0%, #2C3A2E 70%, #1c2820 100%);">
+              <div class="thumb-art" aria-hidden="true">03</div>
+            </div>
+            <div class="meta"><span class="cat">Posture</span><span>4 min · Mar 2026</span></div>
+            <h3>A two-minute desk reset that actually works.</h3>
+            <p class="excerpt">A short sequence for desk-bound bodies — anchored in joint mechanics rather than wellness vibes.</p>
+            <a href="#" class="read">Read article <span class="arrow" aria-hidden="true">→</span></a>
+          </article>
+
+          <article
+            class="blog-card"
+            x-show="match({ cat:'practice', title:'How often should you book a massage?', excerpt:'A practical answer that depends on what you are treating.' })"
+          >
+            <div class="thumb" style="background:radial-gradient(ellipse at 30% 60%, #57694a 0%, #2C3A2E 70%, #1c2820 100%);">
+              <div class="thumb-art" aria-hidden="true">04</div>
+            </div>
+            <div class="meta"><span class="cat">Practice</span><span>6 min · Mar 2026</span></div>
+            <h3>How often should you book a massage?</h3>
+            <p class="excerpt">The honest answer — it depends on what you're treating. Here's how we think about cadence.</p>
+            <a href="#" class="read">Read article <span class="arrow" aria-hidden="true">→</span></a>
+          </article>
+
+          <article
+            class="blog-card"
+            x-show="match({ cat:'insurance', title:'Direct billing — what we can and can\'t do.', excerpt:'A primer on extended health coverage in BC.' })"
+          >
+            <div class="thumb" style="background:radial-gradient(ellipse at 60% 50%, #5a6b48 0%, #2C3A2E 70%, #1c2820 100%);">
+              <div class="thumb-art" aria-hidden="true">05</div>
+            </div>
+            <div class="meta"><span class="cat">Insurance</span><span>5 min · Feb 2026</span></div>
+            <h3>Direct billing — what we can and can't do.</h3>
+            <p class="excerpt">A primer on extended health coverage in BC and how the direct billing process actually works.</p>
+            <a href="#" class="read">Read article <span class="arrow" aria-hidden="true">→</span></a>
+          </article>
+
+          <article
+            class="blog-card"
+            x-show="match({ cat:'recovery', title:'What to do — and not do — the day after deep tissue.', excerpt:'Hydration, movement, and the bath myth.' })"
+          >
+            <div class="thumb" style="background:radial-gradient(ellipse at 40% 30%, #6a7a52 0%, #2C3A2E 70%, #1c2820 100%);">
+              <div class="thumb-art" aria-hidden="true">06</div>
+            </div>
+            <div class="meta"><span class="cat">Recovery</span><span>5 min · Feb 2026</span></div>
+            <h3>What to do — and not do — the day after deep tissue.</h3>
+            <p class="excerpt">Hydration, light movement, and a quick reality check on the "drink eight glasses of water" myth.</p>
+            <a href="#" class="read">Read article <span class="arrow" aria-hidden="true">→</span></a>
+          </article>
+
+          <article
+            class="blog-card"
+            x-show="match({ cat:'posture', title:'Headaches that come from your neck — and what helps.', excerpt:'Cervicogenic headaches, what causes them, and what we treat.' })"
+          >
+            <div class="thumb" style="background:radial-gradient(ellipse at 50% 70%, #4d6048 0%, #2C3A2E 70%, #1c2820 100%);">
+              <div class="thumb-art" aria-hidden="true">07</div>
+            </div>
+            <div class="meta"><span class="cat">Posture</span><span>7 min · Jan 2026</span></div>
+            <h3>Headaches that come from your neck — and what helps.</h3>
+            <p class="excerpt">Cervicogenic headaches — what they are, why they're so often misdiagnosed, and what treatment looks like.</p>
+            <a href="#" class="read">Read article <span class="arrow" aria-hidden="true">→</span></a>
+          </article>
+
+        </div>
+
+        <!-- Empty state -->
+        <p class="blog-empty"
+          x-show="![
+            { cat:'recovery', title:'Why some soreness is normal — and how to tell when it isn\'t.', excerpt:'Post-treatment soreness, DOMS, and when to call us.' },
+            { cat:'posture', title:'A two-minute desk reset that actually works.', excerpt:'A simple sequence for desk workers, anchored in mechanics rather than vibes.' },
+            { cat:'practice', title:'How often should you book a massage?', excerpt:'A practical answer that depends on what you are treating.' },
+            { cat:'insurance', title:'Direct billing — what we can and can\'t do.', excerpt:'A primer on extended health coverage in BC.' },
+            { cat:'recovery', title:'What to do — and not do — the day after deep tissue.', excerpt:'Hydration, movement, and the bath myth.' },
+            { cat:'posture', title:'Headaches that come from your neck — and what helps.', excerpt:'Cervicogenic headaches, what causes them, and what we treat.' }
+          ].some(p => match(p))"
+        >Nothing matches that yet — try a different category or search term.</p>
+        <!-- [CLIENT TO PROVIDE] real journal posts replace these placeholders. -->
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BOOKING CTA
+         ============================================================ -->
+    <section class="section section-sand" id="booking">
+      <div class="container">
+        <div class="cta-block">
+          <div>
+            <p class="eyebrow eyebrow--on-dark" style="margin-bottom:1.25rem"><span class="num">06</span> Book a session</p>
+            <h2>Reading is good. <em>Booking</em> is better.</h2>
+            <p class="lead lead--on-dark" style="margin-top:1.25rem; max-width:48ch;">
+              No article replaces a hands-on assessment. If something we wrote here resonates, the next step is usually a session.
+            </p>
+            <div class="cta-actions">
+              <a href="https://rmtcorner.janeapp.com/" target="_blank" rel="noopener" class="btn btn-leaf">Book on Jane App <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="/contact" class="btn btn-ghost-light">Send a message</a>
+            </div>
+          </div>
+          <div class="cta-meta">
+            <div class="meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Mon–Sun · 7:30am – 9:30pm
+            </div>
+            <div class="meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+16043419060" style="color:inherit; border-bottom:1px solid rgba(244,239,230,0.3); padding-bottom:1px;">604.341.9060</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-[#1C1F1B] text-[#A09880]">
+    <div class="border-b border-white/10 py-12 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <h2 class="text-white text-2xl font-semibold mb-1" style="font-family:var(--font-display); font-weight:500; letter-spacing:-0.012em;">Ready to feel better?</h2>
+          <p class="text-white/50 text-sm">Book online in under a minute.</p>
+        </div>
+        <a href="https://rmtcorner.janeapp.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-[#C0D878] text-[#1C1F1B] font-medium px-6 py-3 rounded-lg hover:bg-[#d4e89a] transition-colors duration-200">Book on Jane App <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+      <div class="col-span-2 md:col-span-1">
+        <img src="/assets/logo.svg" alt="RMT Corner" width="44" height="44" class="mb-4 brightness-0 invert opacity-80" />
+        <p class="text-sm leading-relaxed mb-2">Registered massage therapy on Vancouver's Burrard Street.</p>
+      </div>
+      <div>
+        <h3 class="text-white/90 text-xs uppercase tracking-widest mb-4">Navigate</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/" class="hover:text-white/80 transition-colors duration-200">Home</a></li>
+          <li><a href="/services" class="hover:text-white/80 transition-colors duration-200">Services</a></li>
+          <li><a href="/about" class="hover:text-white/80 transition-colors duration-200">About</a></li>
+          <li><a href="/blog" class="hover:text-white/80 transition-colors duration-200">Journal</a></li>
+          <li><a href="/contact" class="hover:text-white/80 transition-colors duration-200">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-white/90 text-xs uppercase tracking-widest mb-4">Visit</h3>
+        <address class="not-italic text-sm leading-loose">
+          1160 Burrard St, Suite 308<br />
+          Vancouver, BC V6Z 2E8<br />
+          <a href="tel:6043419060" class="hover:text-white/80 transition-colors duration-200">604.341.9060</a><br />
+          Mon–Sun · 7:30am – 9:30pm
+        </address>
+      </div>
+      <div>
+        <h3 class="text-white/90 text-xs uppercase tracking-widest mb-4">Book</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="https://rmtcorner.janeapp.com/" target="_blank" rel="noopener" class="hover:text-white/80 transition-colors duration-200">Jane App Booking</a></li>
+          <li><a href="/services" class="hover:text-white/80 transition-colors duration-200">Session Pricing</a></li>
+          <li><a href="/contact" class="hover:text-white/80 transition-colors duration-200">Send a message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 px-6 md:px-12 py-5">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-white/30">
+        <span>© 2026 RMT Corner. All rights reserved.</span>
+        <div class="flex gap-6">
+          <a href="/privacy" class="hover:text-white/60 transition-colors duration-200">Privacy Policy</a>
+          <a href="/terms" class="hover:text-white/60 transition-colors duration-200">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
