@@ -34,12 +34,21 @@ const server = createServer(async (req, res) => {
       res.writeHead(403); return res.end('Forbidden');
     }
 
+    const tryStat = async (p) => { try { return await stat(p); } catch { return null; } };
     let target = filePath;
-    try { await stat(target); }
-    catch {
-      // try .html fallback for clean URLs (e.g. /about → /about.html)
-      try { await stat(target + '.html'); target = target + '.html'; }
-      catch { res.writeHead(404); return res.end('Not found'); }
+    let st = await tryStat(target);
+    // If the path resolves to a directory, prefer dir/index.html, otherwise fall through to .html sibling.
+    if (st && st.isDirectory()) {
+      const indexPath = join(target, 'index.html');
+      const indexSt = await tryStat(indexPath);
+      if (indexSt && indexSt.isFile()) { target = indexPath; st = indexSt; }
+      else { st = null; }
+    }
+    // .html fallback for clean URLs (e.g. /about → /about.html, /blog → /blog.html).
+    if (!st || !st.isFile()) {
+      const htmlSt = await tryStat(target + '.html');
+      if (htmlSt && htmlSt.isFile()) { target = target + '.html'; }
+      else { res.writeHead(404); return res.end('Not found'); }
     }
 
     const data = await readFile(target);
