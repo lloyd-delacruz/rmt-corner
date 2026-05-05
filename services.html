@@ -248,23 +248,106 @@
           </div>
         </div>
 
-        <div style="display:grid; gap:1.5rem; grid-template-columns:1fr; margin-top:2.5rem;" class="session-notes">
-          <div class="card card--elevated">
-            <p class="eyebrow" style="margin-bottom:0.5rem">Choosing a duration</p>
-            <p style="font-size:0.9375rem; line-height:1.65; color:var(--text-body);">
-              <strong style="color:var(--text-primary)">45 min</strong> — focused area, returning patient, between regular sessions.<br>
-              <strong style="color:var(--text-primary)">60 min</strong> — most common choice. Full assessment plus treatment of one or two areas.<br>
-              <strong style="color:var(--text-primary)">75 min</strong> — multiple complaints, or one complaint requiring full-body context.<br>
-              <strong style="color:var(--text-primary)">90 min</strong> — deep, structured rehabilitation work or first visits with complex history.<br>
-              <strong style="color:var(--text-primary)">105 min</strong> — a full restorative reset. Combination treatment + relaxation.
+        <div class="duration-guide">
+          <header class="duration-guide__head">
+            <p class="eyebrow">Choosing a duration</p>
+            <h3>How long should I book?</h3>
+            <p class="duration-guide__deck">
+              When in doubt, choose sixty. You can adjust at your next visit — your therapist will carry the conversation forward.
             </p>
-          </div>
+          </header>
+
+          <ul class="duration-guide__list" role="list">
+
+            <li class="duration-row">
+              <div class="duration-row__lead">
+                <span class="duration-row__min">45<span class="duration-row__unit">min</span></span>
+                <span class="duration-row__label">Focused</span>
+              </div>
+              <div class="duration-row__body">
+                <h4>One area, between regular sessions.</h4>
+                <p>Returning patients with an established plan and a single area to address. Brief intake, targeted hands-on work, short debrief — in and out without the watch-checking.</p>
+                <ul class="duration-row__meta" role="list">
+                  <li>Returning patients</li>
+                  <li>Single complaint</li>
+                  <li>Weekly maintenance</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="duration-row duration-row--feature">
+              <span class="duration-row__flag">Most booked</span>
+              <div class="duration-row__lead">
+                <span class="duration-row__min">60<span class="duration-row__unit">min</span></span>
+                <span class="duration-row__label">Standard</span>
+              </div>
+              <div class="duration-row__body">
+                <h4>Full assessment, treatment of one or two areas.</h4>
+                <p>The right starting point for most people. Time enough for an orthopaedic assessment, layered hands-on work, and a clear home plan to take with you.</p>
+                <ul class="duration-row__meta" role="list">
+                  <li>First visits</li>
+                  <li>Two related areas</li>
+                  <li>Weekly or bi-weekly</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="duration-row">
+              <div class="duration-row__lead">
+                <span class="duration-row__min">75<span class="duration-row__unit">min</span></span>
+                <span class="duration-row__label">Extended</span>
+              </div>
+              <div class="duration-row__body">
+                <h4>Multiple complaints, or one with full-body context.</h4>
+                <p>When the neck talks to the jaw, or the low-back to the calf. Room to assess the chain, treat the source, and follow the referral pattern wherever it leads.</p>
+                <ul class="duration-row__meta" role="list">
+                  <li>Connected complaints</li>
+                  <li>Postural patterns</li>
+                  <li>Bi-weekly cadence</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="duration-row">
+              <div class="duration-row__lead">
+                <span class="duration-row__min">90<span class="duration-row__unit">min</span></span>
+                <span class="duration-row__label">Deep work</span>
+              </div>
+              <div class="duration-row__body">
+                <h4>Structured rehab, or first visits with complex history.</h4>
+                <p>Time to read the whole picture — surgery, injury, repetitive load, years of compensation. Full assessment, layered treatment, and a written plan you'll leave with.</p>
+                <ul class="duration-row__meta" role="list">
+                  <li>Post-injury rehab</li>
+                  <li>Complex intake</li>
+                  <li>Bi-weekly to monthly</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="duration-row">
+              <div class="duration-row__lead">
+                <span class="duration-row__min">105<span class="duration-row__unit">min</span></span>
+                <span class="duration-row__label">Restorative</span>
+              </div>
+              <div class="duration-row__body">
+                <h4>A full restorative reset.</h4>
+                <p>Therapeutic treatment paired with deliberate relaxation work. For high-load weeks, pre-event recovery, or the rare visit where everything needs attention at once.</p>
+                <ul class="duration-row__meta" role="list">
+                  <li>Recovery weeks</li>
+                  <li>Pre-event reset</li>
+                  <li>Monthly or as needed</li>
+                </ul>
+              </div>
+            </li>
+
+          </ul>
+
+          <p class="duration-guide__foot">
+            Direct billing available with most major insurers. Cancellations within 24 hours are charged at full session rate.
+          </p>
         </div>
       </div>
     </section>
-    <style>
-      @media (min-width: 768px) { .session-notes { grid-template-columns: 1fr !important; } }
-    </style>
 
     <!-- ============================================================
          03 — WHAT TO EXPECT (4 steps)
